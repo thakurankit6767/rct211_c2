@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getBooks } from "../Redux/AppReducer/action";
+import "./singleShoe.css";
 
 const SingleShoe = () => {
   const { id } = useParams();
@@ -30,10 +31,10 @@ const SingleShoe = () => {
  
 
   return (
-    <div>
-      <h2>Shoe name</h2>
+    <div className="maindiv">
+      <h2>{currentBook.name}</h2>
       <div>
-        <img src={currentBook.image} alt="Cover Pic" />
+        <img src={currentBook.image} alt="Cover Pic" className="simage"/>
       </div>
       <div>
         <div>{currentBook.category}</div>

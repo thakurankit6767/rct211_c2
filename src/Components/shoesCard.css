@@ -1,0 +1,11 @@
+.as{
+    height:300px;
+    width:250px;
+    border:2px solid red
+}
+.img{
+    height:230px;
+    width:250px;
+    justify-content: center;
+}
+

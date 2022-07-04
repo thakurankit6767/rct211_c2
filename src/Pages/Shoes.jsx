@@ -37,12 +37,12 @@ const Shoes = () => {
     }
   }, [location.search]);
   return (
-    <div>
+    <div  style={{ display: "flex", padding: "10px", gap: "10px" }}>
       <Filter />
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
+          gridTemplateColumns: "repeat(4, 1fr)",
           gap: "20px",
           height: "97vh",
           overflow: "scroll",
