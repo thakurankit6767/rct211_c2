@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
-import { getBooks } from "../Redux/AppReducer/action";
+import { getShoes } from "../Redux/AppReducer/action";
 import "./singleShoe.css";
 
 const SingleShoe = () => {
@@ -14,7 +14,7 @@ const SingleShoe = () => {
 
   useEffect(() => {
     if (!data.length) {
-      dispatch(getBooks());
+      dispatch(getShoes());
     }
   }, [dispatch]);
 

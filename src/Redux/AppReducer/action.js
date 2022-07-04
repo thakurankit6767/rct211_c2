@@ -9,7 +9,7 @@ import {
 
 
 
-  export const getBooks = (params) => (dispatch) => {
+  export const getShoes = (params) => (dispatch) => {
     dispatch({ type: GET_SHOES_DATA_REQUEST });
     return axios
       .get(`http://localhost:8080/shoes`, params)

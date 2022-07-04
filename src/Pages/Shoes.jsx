@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import Filter from "../Components/Filter";
-import { getBooks } from "../Redux/AppReducer/action";
+import { getShoes } from "../Redux/AppReducer/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams, useLocation, Link } from "react-router-dom";
 import ShoeCard from "../Components/ShoeCard";
@@ -29,11 +29,11 @@ const Shoes = () => {
           _order: sortBy,
         },
       };
-      dispatch(getBooks(getBooksParams));
+      dispatch(getShoes(getBooksParams));
 
       //if deselect all filter
     } else if (location.search === "") {
-      dispatch(getBooks());
+      dispatch(getShoes());
     }
   }, [location.search]);
   return (
