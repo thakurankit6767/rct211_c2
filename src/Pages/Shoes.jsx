@@ -9,7 +9,7 @@ import ShoeCard from "../Components/ShoeCard";
 // import { useSearchParams, useLocation, Link } from "react-router-dom";
 
 const Shoes = () => {
-  const data = useSelector((state) => state.reducer.shoes);
+  const data = useSelector((state) => state.AppReducer.shoes);
   console.log("shoes", data);
 
   const [searchParams] = useSearchParams();
@@ -22,14 +22,14 @@ const Shoes = () => {
     if (!data.length || location.search) {
       const sortBy = searchParams.get("sortBy");
 
-      const getBooksParams = {
+      const getShoesParams = {
         params: {
           category: searchParams.getAll("category"),
           _sort: sortBy && "release_year",
           _order: sortBy,
         },
       };
-      dispatch(getShoes(getBooksParams));
+      dispatch(getShoes(getShoesParams));
 
       //if deselect all filter
     } else if (location.search === "") {

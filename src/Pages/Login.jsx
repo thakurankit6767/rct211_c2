@@ -1,35 +1,27 @@
 import React from "react";
-import { getLoginAPI } from "../Redux/AuthReducer/action";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { useEffect } from "react";
+import { login } from "../Redux/AuthReducer/action";
 import { useLocation, useNavigate } from "react-router-dom";
 
-
 const Login = () => {
-
+  const [email, setemail] = useState("eve.holt@reqres.in");
+  const [password, setpassword] = useState("cityslicka");
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
-  const { state } = useLocation();
-
-
-  const email = "eve.holt@reqres.in";
-  const password = "cityslicka";
-
-
+  const location = useLocation();
+  const navigateTo = location.state?.from?.pathname || "/";
   const handleSubmit = (e) => {
     e.preventDefault();
-    // const email = e.target[0].value;
-    // const password = e.target[1].value;
-
-    const comingFrom = state?.from?.pathname || "/";
-
-    dispatch(getLoginAPI({ email: email, password: password })).then((r) => {
-      if (r.type === "get/login/success") {
-        navigate(comingFrom, { replace: true });
-      }
-    });
+    if (email && password) {
+      dispatch(login({ email, password })).then((result) => {
+        if (result.type === "LOGIN_SUCCESS") {
+          navigate(navigateTo);
+        }
+      });
+    }
   };
-
   return (
     <div>
       <h2>LOGIN</h2>
@@ -37,12 +29,20 @@ const Login = () => {
         <div>
           <label>User Email</label>
           <br />
-          <input data-cy="login-email" type="email" defaultValue={email} />
+          <input
+            data-cy="login-email"
+            onChange={(e) => setemail(e.target.value)}
+            defaultValue={"eve.holt@reqres.in"}
+          />
         </div>
         <div>
           <label>User Password</label>
           <br />
-          <input data-cy="login-password" type="text" defaultValue={password}  />
+          <input
+            data-cy="login-password"
+            onChange={(e) => setpassword(e.target.value)}
+            defaultValue={"cityslicka"}
+          />
         </div>
         <button type="submit" data-cy="login-submit">
           Loading
