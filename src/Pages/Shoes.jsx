@@ -45,7 +45,7 @@ const Shoes = () => {
           gridTemplateColumns: "repeat(4, 1fr)",
           gap: "20px",
           height: "97vh",
-          overflow: "scroll",
+          // overflow: "scroll",
         }}
       >
         {/* Map through the shoes list here using ShoeCard Component */}
